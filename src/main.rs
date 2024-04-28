@@ -28,6 +28,39 @@ impl Add for Point {
     }
 }
 
+
+trait Pilot {
+    fn fly(&self);
+}
+
+trait Wizard {
+    fn fly(&self);
+}
+
+struct Human;
+
+impl Pilot for Human {
+    fn fly(&self) {
+        println!("I'm the pilot and I'm talking to you")
+    }
+}
+
+impl Wizard for Human {
+    fn fly(&self) {
+        println!("Flyiiiiiiiiing!")
+    }
+}
+
+impl Human {
+    fn fly(&self){
+        println!("*make gesture with arms as it can fly*")
+    }
+}
+
+
+
+
+
 fn main() {
     assert_eq!(
         Point { x: 1, y: 0 } + Point { x: 2, y: 3 },
