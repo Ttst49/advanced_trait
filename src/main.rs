@@ -1,4 +1,6 @@
 use std::ops::Add;
+use std::fmt;
+use std::fmt::Formatter;
 
 #[derive(Debug,Clone, Copy,PartialEq)]
 struct Point{
@@ -65,8 +67,37 @@ fn use_traits_with_human() {
     Wizard::fly(&guy);
 }
 
+//if no self in method definition :
+//<Type as Trait>::function(destinataire_si_methode, argument_suivant, ...);
+
+trait OutlinePrint: fmt::Display{
+    fn outline_print(&self){
+        let value = self.to_string();
+        let width = value.len();
+        println!("{}","*".repeat(width+4));
+        println!("*{}*", " ".repeat(width + 2));
+        println!("* {} *", value);
+        println!("*{}*", " ".repeat(width + 2));
+        println!("{}", "*".repeat(width + 4));
+    }
+}
+
+impl fmt::Display for Point {
+    fn fmt(&self, f: &mut Formatter) -> fmt::Result {
+        write!(f, "({}, {})", self.x, self.y)
+    }
+}
+
+struct Envelop(Vec<String>);
+
+impl fmt::Display for Envelop {
+    fn fmt(&self, f: &mut Formatter) -> fmt::Result {
+        write!(f, "[{}]", self.0.join(", "))
+    }
+}
 
 
 fn main() {
-    use_traits_with_human()
+    let w = Envelop(vec![String::from("hello"), String::from("world")]);
+    println!("w = {}", w);
 }
