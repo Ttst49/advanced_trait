@@ -52,14 +52,14 @@ impl Wizard for Human {
         println!("Flyiiiiiiiiing!")
     }
 }
-
+#[allow(unused)]
 impl Human {
     fn fly(&self){
         println!("*make gesture with arms as it can fly*")
     }
 }
 
-
+#[allow(unused)]
 fn use_traits_with_human() {
     let guy = Human;
     guy.fly();
@@ -88,6 +88,7 @@ impl fmt::Display for Point {
     }
 }
 
+#[derive(Debug)]
 struct Envelop(Vec<String>);
 
 impl fmt::Display for Envelop {
@@ -99,5 +100,5 @@ impl fmt::Display for Envelop {
 
 fn main() {
     let w = Envelop(vec![String::from("hello"), String::from("world")]);
-    println!("w = {}", w);
+    println!("w = {:?}", w);
 }
