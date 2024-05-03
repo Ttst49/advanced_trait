@@ -97,6 +97,14 @@ impl fmt::Display for Envelop {
     }
 }
 
+fn type_object(){
+    type Kilometers = i64;
+    let x:i64 = 5;
+    let y:i64 = 5;
+    println!("x + y = {}",x+y)
+}
+
+
 
 fn main() {
     let w = Envelop(vec![String::from("hello"), String::from("world")]);
