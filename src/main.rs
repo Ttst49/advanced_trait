@@ -107,6 +107,6 @@ fn type_object(){
 
 
 fn main() {
-    let w = Envelop(vec![String::from("hello"), String::from("world")]);
+    let w = Envelop(vec![String::from("hey"), String::from("my dear Friend")]);
     println!("w = {:?}", w);
 }
